@@ -114,18 +114,44 @@ public class TreeTraverser {
         return result;
     }
 
+    /**
+     * Source: https://www.geeksforgeeks.org/iterative-postorder-traversal-using-stack/
+     * 1.1 Create an empty stack
+     * 2.1 Do following while root is not NULL
+     *     a) Push root's right child and then root to stack.
+     *     b) Set root as root's left child.
+     * 2.2 Pop an item from stack and set it as root.
+     *     a) If the popped item has a right child and the right child
+     *        is at top of stack, then remove the right child from stack,
+     *        push the root back and set root as root's right child.
+     *     b) Else print root's data and set root as NULL.
+     * 2.3 Repeat steps 2.1 and 2.2 while stack is not empty.
+     */
     public String IterativePostOrderSingleStack(BTree.TreeNode node) {
         String result = "";
         if(node == null || node.getValue() == null) {
             return result;
         }
-        // TODO: Implement me...
-        /*Stack<BTree.TreeNode> stack = new Stack<BTree.TreeNode>();
-        stack.push(node);
-        BTree.TreeNode previousNode = null;
-        while (!stack.isEmpty()) {
-
-        }*/
+        Stack<BTree.TreeNode> stack = new Stack<BTree.TreeNode>();
+        while (!stack.isEmpty() || node != null) {
+            if(node != null) {
+                if(node.getRight() != null) {
+                    stack.push(node.getRight());
+                }
+                stack.push(node);
+                node = node.getLeft();
+            } else {
+                node = stack.pop();
+                if(node.getRight() != null && stack.size() > 0 && node.getRight() == stack.peek()) {
+                    stack.pop();
+                    stack.push(node);
+                    node = node.getRight();
+                } else {
+                    result += node.getValue();
+                    node = null;
+                }
+            }
+        }
         return result;
     }
 
