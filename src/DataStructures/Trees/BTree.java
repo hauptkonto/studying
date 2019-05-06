@@ -89,6 +89,10 @@ public class BTree {
             this.right = right;
         }
 
+        public boolean isLeaf() {
+            return this.left == null && this.right == null;
+        }
+
         /**
          * Required for Breath First traverse and adding.
          */

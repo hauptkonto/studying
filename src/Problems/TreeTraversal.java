@@ -14,7 +14,8 @@ public class TreeTraversal implements IProblem{
         System.out.println("Recursive Post Order:   " + tt.RecursivePostOrder(tree.getRoot()));
         System.out.println("Iterative Pre Order:    " + tt.IterativePreOrder(tree.getRoot()));
         System.out.println("Iterative In Order:     " + tt.IterativeInOrder(tree.getRoot()));
-        System.out.println("Iterative Post Order:   " + tt.IterativePostOrder(tree.getRoot()));
+        System.out.println("Iterative Post OrderDS: " + tt.IterativePostOrderDualStack(tree.getRoot()));
+        System.out.println("Iterative Post OrderSS: " + tt.IterativePostOrderSingleStack(tree.getRoot()));
         System.out.println("Iterative Breath First: " + tt.IterativeBreathFirst(tree.getRoot()));
     }
 }

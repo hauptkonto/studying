@@ -62,22 +62,73 @@ public class TreeTraverser {
         }
         return result;
     }
+
     public String IterativeInOrder(BTree.TreeNode node) {
         String result = "";
         if(node == null || node.getValue() == null) {
             return result;
         }
-        // TODO: Implement me...
+        Stack<BTree.TreeNode> stack = new Stack<>();
+        // The while condition changes since this time we don't add an initial node to the stack.
+        while(!stack.isEmpty() || node != null) {
+            if(node != null) {
+                // If the current node is not null, we push it into the stack and set it's left child as current.
+                stack.push(node);
+                node = node.getLeft();
+            } else {
+                // if the current node is null, we get one from the stack and visit it. Then we set the right child
+                // of the current node as the new current node.
+                node = stack.pop();
+                result += node.getValue();
+                node = node.getRight();
+            }
+        }
         return result;
     }
-    public String IterativePostOrder(BTree.TreeNode node) {
+
+    public String IterativePostOrderDualStack(BTree.TreeNode node) {
+        String result = "";
+        if(node == null || node.getValue() == null) {
+            return result;
+        }
+        // Dual Stack implementation
+        Stack<BTree.TreeNode> mainStack = new Stack<>();
+        Stack<BTree.TreeNode> auxStack = new Stack<>();
+        mainStack.push(node);
+        while(!mainStack.isEmpty()) {
+            // Get the current node and put it into the aux stack
+            BTree.TreeNode currentNode = mainStack.pop();
+            auxStack.push(currentNode);
+            // Add the current node's children to the main stack for future iterations.
+            if(currentNode.getLeft() != null) {
+                mainStack.push(currentNode.getLeft());
+            }
+            if(currentNode.getRight() != null) {
+                mainStack.push(currentNode.getRight());
+            }
+        }
+        // Print second stack. Amazing result.
+        while(!auxStack.isEmpty()){
+            result += auxStack.pop().getValue();
+        }
+        return result;
+    }
+
+    public String IterativePostOrderSingleStack(BTree.TreeNode node) {
         String result = "";
         if(node == null || node.getValue() == null) {
             return result;
         }
         // TODO: Implement me...
+        /*Stack<BTree.TreeNode> stack = new Stack<BTree.TreeNode>();
+        stack.push(node);
+        BTree.TreeNode previousNode = null;
+        while (!stack.isEmpty()) {
+
+        }*/
         return result;
     }
+
     public String IterativeBreathFirst(BTree.TreeNode node){
         String result = "";
         if(node == null || node.getValue() == null) {
