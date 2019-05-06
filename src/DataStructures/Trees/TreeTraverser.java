@@ -143,6 +143,8 @@ public class TreeTraverser {
             } else {
                 node = stack.pop();
                 if(node.getRight() != null && stack.size() > 0 && node.getRight() == stack.peek()) {
+                    // Current node has a right child that is also the
+                    // one at the top of the stack
                     stack.pop();
                     stack.push(node);
                     node = node.getRight();
@@ -173,4 +175,15 @@ public class TreeTraverser {
         return result;
     }
     //</editor-fold>
+
+    /**
+     * Used for debugging.
+     */
+    public String stackToString(Stack<BTree.TreeNode> stack) {
+        String result = "";
+        for (BTree.TreeNode node : stack ) {
+            result += node.getValue();
+        }
+        return result;
+    }
 }

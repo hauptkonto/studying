@@ -89,6 +89,10 @@ public class BTree {
             this.right = right;
         }
 
+        public String toString() {
+            return this.value;
+        }
+
         public boolean isLeaf() {
             return this.left == null && this.right == null;
         }
