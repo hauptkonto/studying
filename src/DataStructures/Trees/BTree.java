@@ -1,13 +1,10 @@
 package DataStructures.Trees;
 
-import com.sun.source.tree.Tree;
-
-import javax.swing.tree.TreeNode;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BTree {
-    private TreeNode root;
+public class BTree<T> {
+    private TreeNode<T> root;
 
     public BTree() {
         setupExampleData(15);
@@ -25,6 +22,24 @@ public class BTree {
         }
     }
 
+    public void balancedAdd(Integer element) {
+        root = recursiveBalancedAdd(element, root);
+    }
+
+    private TreeNode recursiveBalancedAdd(Integer element, TreeNode node) {
+        if(node == null) {
+            return new TreeNode(element);
+        } else {
+            Integer value = (Integer)node.getValue();
+            if(element < value) {
+                return recursiveBalancedAdd(element, node.getLeft());
+            } else if(value < element) {
+                return recursiveBalancedAdd(element, node.getRight());
+            }
+        }
+        return node;
+    }
+
     public void breathFirstAdd(String value) {
         TreeNode newNode = new TreeNode(value);
         if(value == null)
@@ -33,7 +48,6 @@ public class BTree {
             root = newNode;
             return;
         }
-
         List<TreeNode> currentChildren = new ArrayList<TreeNode>();
         currentChildren.add(root);
         while(true) {
@@ -51,25 +65,24 @@ public class BTree {
             }
             currentChildren = nextChildren;
         }
-
     }
 
     /**
      * Node used within this tree class.
      */
-    public class TreeNode {
-        private String value;
+    public class TreeNode<T> {
+        private T value;
         private TreeNode left, right;
 
-        public TreeNode(String value) {
+        public TreeNode(T value) {
             this.value = value;
         }
 
-        public String getValue() {
+        public T getValue() {
             return value;
         }
 
-        public void setValue(String value) {
+        public void setValue(T value) {
             this.value = value;
         }
 
@@ -90,7 +103,7 @@ public class BTree {
         }
 
         public String toString() {
-            return this.value;
+            return this.value + "";
         }
 
         public boolean isLeaf() {

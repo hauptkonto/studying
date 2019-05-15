@@ -7,7 +7,7 @@ public class TreeTraversal implements IProblem{
 
     public void Run() {
         TreeTraverser tt = new TreeTraverser();
-        BTree tree = new BTree();
+        BTree<String> tree = new BTree();
         System.out.println("Tree Traversals: ");
         System.out.println("Recursive Pre Order:    " + tt.RecursivePreOrder(tree.getRoot()));
         System.out.println("Recursive In Order:     " + tt.RecursiveInOrder(tree.getRoot()));
