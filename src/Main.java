@@ -1,11 +1,9 @@
-import Problems.BestMatrixAssociation;
-import Problems.IProblem;
-import Problems.TreeTraversal;
+import Problems.Top50.group00.*;
+import Utility.Executer;
 
 public class Main {
 
     public static void main(String[] args) {
-        IProblem problem = new BestMatrixAssociation();
-        problem.Run();
+        Executer.execute(new N01_Fibonacci());
     }
 }

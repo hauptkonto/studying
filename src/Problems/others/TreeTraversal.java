@@ -1,11 +1,17 @@
-package Problems;
+package Problems.others;
 
 import DataStructures.Trees.BTree;
 import DataStructures.Trees.TreeTraverser;
+import Utility.IProblem;
 
-public class TreeTraversal implements IProblem{
+public class TreeTraversal implements IProblem {
 
-    public void Run() {
+    @Override
+    public String GetName() {
+        return this.getClass().getName();
+    }
+
+    public void Execute() {
         TreeTraverser tt = new TreeTraverser();
         BTree<String> tree = new BTree();
         System.out.println("Tree Traversals: ");

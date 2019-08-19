@@ -39,6 +39,23 @@ public class TreeTraverser {
         result += node.getValue();
         return result;
     }
+
+    public static void printLeaves(BTree tree) {
+        System.out.print("Leaves: ");
+        printLeavesRecursive(tree.getRoot());
+        System.out.println();
+    }
+    private static void printLeavesRecursive(BTree.TreeNode node) {
+        if(node == null) {
+            return;
+        }
+        if(node.isLeaf()) {
+            System.out.print(node.getValue());
+            return;
+        }
+        printLeavesRecursive(node.getLeft());
+        printLeavesRecursive(node.getRight());
+    }
     //</editor-fold>
 
     //<editor-fold desc="Iterative">

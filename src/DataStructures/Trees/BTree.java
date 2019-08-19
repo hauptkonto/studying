@@ -10,6 +10,10 @@ public class BTree<T> {
         setupExampleData(15);
     }
 
+    public void setRoot(TreeNode root) {
+        this.root = root;
+    }
+
     public TreeNode getRoot() {
         return root;
     }
@@ -70,7 +74,7 @@ public class BTree<T> {
     /**
      * Node used within this tree class.
      */
-    public class TreeNode<T> {
+    public static class TreeNode<T> {
         private T value;
         private TreeNode left, right;
 

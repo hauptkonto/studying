@@ -1,14 +1,18 @@
-package Problems;
+package Problems.others;
 
-import Utility.Utility;
 
-import javax.swing.text.Utilities;
+import Utility.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class BestMatrixAssociation implements IProblem{
+public class BestMatrixAssociation implements IProblem {
 
-    public void Run() {
+    @Override
+    public String GetName() {
+        return this.getClass().getName();
+    }
+    public void Execute() {
         Integer[] p = {40, 20, 30, 10, 30};
         calculateBestAssociation(p);
     }
